@@ -50,7 +50,7 @@ runCmd ./lib4bin -p -v -s -k \
 	/usr/lib/"$ARCH"-linux-gnu/gdk-pixbuf-*/*/loaders/*
 runCmd ./lib4bin -s --with-wrappe --dst-dir "$APPDIR"/bin "$APPDIR"/shared/bin/cpu-x-daemon
 
-runCmd mv --verbose "$APPDIR"/shared/share/glib-*/schemas/* "$APPDIR"/share/glib-*/schemas/*
+#runCmd mv --verbose "$APPDIR"/shared/share/glib-*/schemas/* "$APPDIR"/share/glib-*/schemas/*
 runCmd ln ./sharun ./AppRun
 runCmd ./sharun -g
 
