@@ -47,4 +47,4 @@ runCmd ./lib4bin -p -v -s -k "$APPDIR"/shared/bin/* -d "$APPDIR"
 runCmd mkdir --parents --verbose "$WORKSPACE/AppImage" && runCmd cd "$_"
 runCmd wget "${WGET_ARGS[@]}" "https://github.com/pkgforge-dev/appimagetool-uruntime/releases/download/continuous/appimagetool-$ARCH.AppImage"
 runCmd chmod --verbose a+x ./appimagetool-$ARCH.AppImage
-./appimagetool-$ARCH.AppImage --no-appstream -u "$UPINFO" "$APPDIR"
+./appimagetool-$ARCH.AppImage --no-appstream -u "$LDAI_UPDATE_INFORMATION" "$APPDIR"
