@@ -28,35 +28,20 @@ ARCH="$(uname -m)"
 # Reset arguments
 set --
 
-# Download linuxdeploy and plugins
-BUNDLER="$WORKSPACE/linuxdeploy.AppImage"
-runCmd wget "${WGET_ARGS[@]}" "https://github.com/linuxdeploy/linuxdeploy/releases/download/continuous/linuxdeploy-${ARCH}.AppImage" --output-document="$BUNDLER" \
-	&& set -- "$@" --output appimage
-runCmd wget "${WGET_ARGS[@]}" "https://raw.githubusercontent.com/linuxdeploy/linuxdeploy-plugin-gtk/master/linuxdeploy-plugin-gtk.sh" \
-	&& set -- "$@" --plugin gtk
-runCmd wget "${WGET_ARGS[@]}" "https://raw.githubusercontent.com/linuxdeploy/linuxdeploy-plugin-ncurses/master/linuxdeploy-plugin-ncurses.sh" \
-	&& set -- "$@" --plugin ncurses
-runCmd wget "${WGET_ARGS[@]}" "https://raw.githubusercontent.com/linuxdeploy/misc-plugins/master/gettext/linuxdeploy-plugin-gettext.sh" \
-	&& set -- "$@" --plugin gettext
-#if [[ -z "$VERSION" ]]; then
-#	export LINUXDEPLOY_PLUGIN_GDB_SRC="$WORKSPACE/src"
-#	runCmd wget "${WGET_ARGS[@]}" "https://raw.githubusercontent.com/linuxdeploy/misc-plugins/master/gdb/linuxdeploy-plugin-gdb.sh" \
-#		&& set -- "$@" --plugin gdb
-#fi
-runCmd chmod --verbose a+x ./*.AppImage ./*.sh
-
-# Set useful variables for linuxdeploy
+# Set update information
 [[ -n "$VERSION" ]] && export RELEASE="latest" || export RELEASE="continuous"
 export LDAI_UPDATE_INFORMATION="gh-releases-zsync|${GITHUB_REPOSITORY//\//|}|${RELEASE}|CPU-X-*$ARCH.AppImage.zsync"
 export LDAI_VERBOSE=1
-#export DEBUG=1
-export DISABLE_COPYRIGHT_FILES_DEPLOYMENT=1
 
 # Run linuxdeploy
 echo "LDAI_UPDATE_INFORMATION=$LDAI_UPDATE_INFORMATION"
+
+runCmd cp --verbose "$APPDIR/usr/share/applications/io.github.thetumultuousunicornofdarkness.cpu-x.desktop" 
+runCmd mv ---verbose "$APPDIR"/usr "$APPDIR"/shared
+
+runCmd wget "${WGET_ARGS[@]}" "https://raw.githubusercontent.com/VHSgunzo/sharun/refs/heads/main/lib4bin"
+runCmd chmod --verbose a+x ./lib4bin
+runCmd ./lib4bin -p -v -s -k "$APPDIR"/shared/bin/* -d "$APPDIR"
 runCmd mkdir --parents --verbose "$WORKSPACE/AppImage" && runCmd cd "$_"
-runCmd "$BUNDLER" \
-	--appdir="$APPDIR" \
-	--desktop-file="$APPDIR/usr/share/applications/io.github.thetumultuousunicornofdarkness.cpu-x.desktop" \
-	--verbosity=1 \
-	"$@"
+runCmd wget "${WGET_ARGS[@]}" "https://github.com/pkgforge-dev/appimagetool-uruntime/releases/download/continuous/appimagetool-$ARCH.AppImage"
+./appimagetool --no-appstream -u "$UPINFO" "$APPDIR"
