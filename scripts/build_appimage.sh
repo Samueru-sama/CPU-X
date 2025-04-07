@@ -37,7 +37,7 @@ export LDAI_VERBOSE=1
 echo "LDAI_UPDATE_INFORMATION=$LDAI_UPDATE_INFORMATION"
 
 runCmd cp --verbose "$APPDIR/usr/share/applications/io.github.thetumultuousunicornofdarkness.cpu-x.desktop" "$APPDIR"
-runCmd mv ---verbose "$APPDIR"/usr "$APPDIR"/shared
+runCmd mv --verbose "$APPDIR"/usr "$APPDIR"/shared
 
 runCmd wget "${WGET_ARGS[@]}" "https://raw.githubusercontent.com/VHSgunzo/sharun/refs/heads/main/lib4bin"
 runCmd chmod --verbose a+x ./lib4bin
