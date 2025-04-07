@@ -49,6 +49,8 @@ runCmd ./lib4bin -p -v -s -k \
 	/usr/lib/"$ARCH"-linux-gnu/libgirepository-*.so* \
 	/usr/lib/"$ARCH"-linux-gnu/gtk-*/*/immodules/*.so \
 	/usr/lib/"$ARCH"-linux-gnu/gdk-pixbuf-*/*/loaders/*
+runCmd ln ./sharun ./AppRun
+runCmd ./sharun -g
 
 # Make AppImage
 runCmd mkdir --parents --verbose "$WORKSPACE/AppImage" && runCmd cd "$_"
