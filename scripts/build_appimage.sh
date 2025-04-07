@@ -51,8 +51,8 @@ runCmd ./lib4bin -p -v -s -k \
 runCmd ./lib4bin -s --with-wrappe --dst-dir "$APPDIR"/bin "$APPDIR"/shared/bin/cpu-x-daemon
 
 #runCmd mv --verbose "$APPDIR"/shared/share/glib-*/schemas/* "$APPDIR"/share/glib-*/schemas/*
-runCmd ln ./sharun ./AppRun
-runCmd ./sharun -g
+runCmd ln "$APPDIR"/sharun "$APPDIR"/AppRun
+runCmd "$APPDIR"/sharun -g
 
 # Make AppImage
 runCmd mkdir --parents --verbose "$WORKSPACE/AppImage" && runCmd cd "$_"
