@@ -72,6 +72,7 @@ sudo apt-get install -y -qq \
 	ocl-icd-libopencl1 \
 	ocl-icd-opencl-dev \
 	libfuse2 \
+	xvfb \
 	"${PACKAGES[@]}"
 
 sudo update-alternatives --install /usr/bin/gcc gcc "/usr/bin/gcc-$GCC_VER" 9001 # It's Over 9000
