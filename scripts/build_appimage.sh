@@ -45,6 +45,7 @@ runCmd chmod --verbose a+x ./lib4bin
 runCmd ./lib4bin -p -v -s -k \
 	--dst-dir "$APPDIR" \
 	"$APPDIR"/shared/bin/cpu-x \
+	/usr/lib/"$ARCH"-linux-gnu/dri/* \
 	/usr/lib/"$ARCH"-linux-gnu/libEGL*.so* \
 	/usr/lib/"$ARCH"-linux-gnu/libvulkan*.so* \
 	/usr/lib/"$ARCH"-linux-gnu/libgirepository-*.so* \
