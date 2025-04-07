@@ -36,6 +36,7 @@ echo "LDAI_UPDATE_INFORMATION=$LDAI_UPDATE_INFORMATION"
 
 # Bundle deps
 runCmd cp --verbose "$APPDIR/usr/share/applications/io.github.thetumultuousunicornofdarkness.cpu-x.desktop" "$APPDIR"
+runCmd cp --verbose "$APPDIR/usr/share/icons/hicolor/256x256/apps/io.github.thetumultuousunicornofdarkness.cpu-x.png" "$APPDIR"
 runCmd mv --verbose "$APPDIR"/usr "$APPDIR"/shared
 
 runCmd wget "${WGET_ARGS[@]}" "https://raw.githubusercontent.com/VHSgunzo/sharun/refs/heads/main/lib4bin"
