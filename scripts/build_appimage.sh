@@ -45,6 +45,7 @@ runCmd chmod --verbose a+x ./lib4bin
 runCmd ./lib4bin -p -v -s -k \
 	--dst-dir "$APPDIR" \
 	"$APPDIR"/shared/bin/cpu-x \
+	/usr/lib/"$ARCH"-linux-gnu/libEGL*.so* \
 	/usr/lib/"$ARCH"-linux-gnu/libvulkan*.so* \
 	/usr/lib/"$ARCH"-linux-gnu/libgirepository-*.so* \
 	/usr/lib/"$ARCH"-linux-gnu/gtk-*/*/immodules/*.so \
@@ -53,6 +54,7 @@ runCmd ./lib4bin -s --with-wrappe --dst-dir "$APPDIR"/bin "$APPDIR"/shared/bin/c
 
 runCmd cp -r "$APPDIR"/shared/share/* "$APPDIR"/share   
 runCmd rm -rf "$APPDIR"/shared/share
+runCmd glib-compile-schemas "$APPDIR"/share/glib-*/schemas 
 
 runCmd ln "$APPDIR"/sharun "$APPDIR"/AppRun
 runCmd "$APPDIR"/sharun -g
