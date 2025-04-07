@@ -41,7 +41,7 @@ runCmd mv --verbose "$APPDIR"/usr "$APPDIR"/shared
 
 runCmd wget "${WGET_ARGS[@]}" "https://raw.githubusercontent.com/VHSgunzo/sharun/refs/heads/main/lib4bin"
 runCmd chmod --verbose a+x ./lib4bin
-runCmd ./lib4bin -p -v -s -k --dst-dir "$APPDIR" "$APPDIR"/shared/bin/*
+runCmd xvfb-run -a -- ./lib4bin -p -v -s -k -e --dst-dir "$APPDIR" "$APPDIR"/shared/bin/*
 
 # Make AppImage
 runCmd mkdir --parents --verbose "$WORKSPACE/AppImage" && runCmd cd "$_"
