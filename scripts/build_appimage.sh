@@ -32,16 +32,18 @@ set --
 [[ -n "$VERSION" ]] && export RELEASE="latest" || export RELEASE="continuous"
 export LDAI_UPDATE_INFORMATION="gh-releases-zsync|${GITHUB_REPOSITORY//\//|}|${RELEASE}|CPU-X-*$ARCH.AppImage.zsync"
 export LDAI_VERBOSE=1
-
-# Run linuxdeploy
 echo "LDAI_UPDATE_INFORMATION=$LDAI_UPDATE_INFORMATION"
 
+# Bundle deps
 runCmd cp --verbose "$APPDIR/usr/share/applications/io.github.thetumultuousunicornofdarkness.cpu-x.desktop" "$APPDIR"
 runCmd mv --verbose "$APPDIR"/usr "$APPDIR"/shared
 
 runCmd wget "${WGET_ARGS[@]}" "https://raw.githubusercontent.com/VHSgunzo/sharun/refs/heads/main/lib4bin"
 runCmd chmod --verbose a+x ./lib4bin
 runCmd ./lib4bin -p -v -s -k "$APPDIR"/shared/bin/* -d "$APPDIR"
+
+# Make AppImage
 runCmd mkdir --parents --verbose "$WORKSPACE/AppImage" && runCmd cd "$_"
 runCmd wget "${WGET_ARGS[@]}" "https://github.com/pkgforge-dev/appimagetool-uruntime/releases/download/continuous/appimagetool-$ARCH.AppImage"
-./appimagetool --no-appstream -u "$UPINFO" "$APPDIR"
+runCmd chmod --verbose a+x ./appimagetool-$ARCH.AppImage
+./appimagetool-$ARCH.AppImage --no-appstream -u "$UPINFO" "$APPDIR"
