@@ -28,35 +28,40 @@ ARCH="$(uname -m)"
 # Reset arguments
 set --
 
-# Download linuxdeploy and plugins
-BUNDLER="$WORKSPACE/linuxdeploy.AppImage"
-runCmd wget "${WGET_ARGS[@]}" "https://github.com/linuxdeploy/linuxdeploy/releases/download/continuous/linuxdeploy-${ARCH}.AppImage" --output-document="$BUNDLER" \
-	&& set -- "$@" --output appimage
-runCmd wget "${WGET_ARGS[@]}" "https://raw.githubusercontent.com/linuxdeploy/linuxdeploy-plugin-gtk/master/linuxdeploy-plugin-gtk.sh" \
-	&& set -- "$@" --plugin gtk
-runCmd wget "${WGET_ARGS[@]}" "https://raw.githubusercontent.com/linuxdeploy/linuxdeploy-plugin-ncurses/master/linuxdeploy-plugin-ncurses.sh" \
-	&& set -- "$@" --plugin ncurses
-runCmd wget "${WGET_ARGS[@]}" "https://raw.githubusercontent.com/linuxdeploy/misc-plugins/master/gettext/linuxdeploy-plugin-gettext.sh" \
-	&& set -- "$@" --plugin gettext
-#if [[ -z "$VERSION" ]]; then
-#	export LINUXDEPLOY_PLUGIN_GDB_SRC="$WORKSPACE/src"
-#	runCmd wget "${WGET_ARGS[@]}" "https://raw.githubusercontent.com/linuxdeploy/misc-plugins/master/gdb/linuxdeploy-plugin-gdb.sh" \
-#		&& set -- "$@" --plugin gdb
-#fi
-runCmd chmod --verbose a+x ./*.AppImage ./*.sh
-
-# Set useful variables for linuxdeploy
+# Set update information
 [[ -n "$VERSION" ]] && export RELEASE="latest" || export RELEASE="continuous"
 export LDAI_UPDATE_INFORMATION="gh-releases-zsync|${GITHUB_REPOSITORY//\//|}|${RELEASE}|CPU-X-*$ARCH.AppImage.zsync"
 export LDAI_VERBOSE=1
-#export DEBUG=1
-export DISABLE_COPYRIGHT_FILES_DEPLOYMENT=1
-
-# Run linuxdeploy
 echo "LDAI_UPDATE_INFORMATION=$LDAI_UPDATE_INFORMATION"
+
+# Bundle deps
+runCmd cp --verbose "$APPDIR/usr/share/applications/io.github.thetumultuousunicornofdarkness.cpu-x.desktop" "$APPDIR"
+runCmd cp --verbose "$APPDIR/usr/share/icons/hicolor/256x256/apps/io.github.thetumultuousunicornofdarkness.cpu-x.png" "$APPDIR"
+runCmd mv --verbose "$APPDIR"/usr "$APPDIR"/shared
+runCmd ln -s ./ "$APPDIR"/usr
+
+runCmd wget "${WGET_ARGS[@]}" "https://raw.githubusercontent.com/VHSgunzo/sharun/refs/heads/main/lib4bin"
+runCmd chmod --verbose a+x ./lib4bin
+runCmd ./lib4bin -p -v -s -k \
+	--dst-dir "$APPDIR" \
+	"$APPDIR"/shared/bin/cpu-x \
+	/usr/lib/"$ARCH"-linux-gnu/libcpuid.so* \
+	/usr/lib/"$ARCH"-linux-gnu/libvulkan*.so* \
+	/usr/lib/"$ARCH"-linux-gnu/libgirepository-*.so* \
+	/usr/lib/"$ARCH"-linux-gnu/gvfs/* \
+	/usr/lib/"$ARCH"-linux-gnu/gtk-*/*/immodules/*.so \
+	/usr/lib/"$ARCH"-linux-gnu/gdk-pixbuf-*/*/loaders/*
+runCmd ./lib4bin -s --with-wrappe --dst-dir "$APPDIR"/bin "$APPDIR"/shared/bin/cpu-x-daemon
+
+runCmd cp -r "$APPDIR"/shared/share/* "$APPDIR"/share   
+runCmd rm -rf "$APPDIR"/shared/share
+runCmd glib-compile-schemas "$APPDIR"/share/glib-*/schemas 
+
+runCmd ln "$APPDIR"/sharun "$APPDIR"/AppRun
+runCmd "$APPDIR"/sharun -g
+
+# Make AppImage
 runCmd mkdir --parents --verbose "$WORKSPACE/AppImage" && runCmd cd "$_"
-runCmd "$BUNDLER" \
-	--appdir="$APPDIR" \
-	--desktop-file="$APPDIR/usr/share/applications/io.github.thetumultuousunicornofdarkness.cpu-x.desktop" \
-	--verbosity=1 \
-	"$@"
+runCmd wget "${WGET_ARGS[@]}" "https://github.com/pkgforge-dev/appimagetool-uruntime/releases/download/continuous/appimagetool-$ARCH.AppImage"
+runCmd chmod --verbose a+x ./appimagetool-$ARCH.AppImage
+./appimagetool-$ARCH.AppImage --no-appstream -u "$LDAI_UPDATE_INFORMATION" "$APPDIR"
