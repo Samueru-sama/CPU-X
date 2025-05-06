@@ -19,7 +19,7 @@ jobs:
           # x86_64 (https://github.com/actions/runner-images/tree/main/images/ubuntu)
           - { arch: x86_64, label: ubuntu-latest }
           # ARM64 (https://github.com/actions/partner-runner-images)
-          - { arch: aarch64, label: ubuntu-latest-arm }
+          - { arch: aarch64, label: ubuntu-24.04-arm }
 
     steps:
     - uses: actions/checkout@v4
