@@ -94,7 +94,6 @@ static const std::list<struct EnvVar> cpux_env_vars =
 	{ true,            "CPUX_BCLK",                N_("Enforce the bus clock")                                      },
 	{ true,            "CPUX_FORCE_CPU_FALLBACK",  N_("Ignore CPU values reported by libcpuid (comma-separated values among 'temp', 'volt', 'freq' and 'mult')") },
 	{ HAS_LIBCPUID,    "CPUX_CPUID_RAW",           N_("Read CPUID raw data from a given file")                      },
-	{ HAS_LIBCPUID,    "CPUX_DEBUG_DATABASE",      N_("Only print a message if CPU is not present in the database") },
 };
 
 /* Check for influenceable environment variables */
@@ -112,8 +111,6 @@ static void check_environment_variables(Data &data)
 	}
 	if(std::getenv("CPUX_CPUID_RAW"))
 		data.cpu.cpuid_raw_file = std::getenv("CPUX_CPUID_RAW");
-	if(std::getenv("CPUX_DEBUG_DATABASE"))
-		Options::set_debug_database((std::atoi(std::getenv("CPUX_DEBUG_DATABASE"))) > 0);
 }
 
 /* This is help display with --help option */
@@ -356,6 +353,7 @@ static void parse_arguments(std::forward_list<std::string> &cmd_args)
 					Options::set_issue(true);
 					Options::set_output_type(OUT_DUMP);
 					Logger::set_verbosity(LOG_DEBUG);
+					MSG_STDOUT(_("Writing log to '%s' file..."), LOG_FILE);
 					std::setlocale(LC_ALL, "C");
 					std::freopen(LOG_FILE, "w", stdout);
 					std::setvbuf(stdout, NULL, _IONBF, 0);

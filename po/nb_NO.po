@@ -4,14 +4,15 @@
 # Allan Nordhøy <epost@anotheragency.no>, 2019, 2020, 2021, 2022, 2023.
 # Michal Čihař <michal@cihar.com>, 2019.
 # L-M-H <lars.magnus@herland.priv.no>, 2022.
+# Telaneo <post@telaneo.net>, 2025.
 msgid ""
 msgstr ""
 "Project-Id-Version: CPU-X\n"
-"Report-Msgid-Bugs-To: https://github.com/TheTumultuousUnicornOfDarkness/CPU-"
-"X/issues\n"
-"POT-Creation-Date: 2025-03-26 17:44+0000\n"
-"PO-Revision-Date: 2023-11-06 13:36+0000\n"
-"Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
+"Report-Msgid-Bugs-To: https://github.com/TheTumultuousUnicornOfDarkness/"
+"CPU-X/issues\n"
+"POT-Creation-Date: 2025-05-01 14:33+0000\n"
+"PO-Revision-Date: 2025-05-02 05:27+0000\n"
+"Last-Translator: Telaneo <post@telaneo.net>\n"
 "Language-Team: Norwegian Bokmål <https://hosted.weblate.org/projects/cpu-x/"
 "translations/nb_NO/>\n"
 "Language: nb_NO\n"
@@ -19,17 +20,15 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.2-dev\n"
+"X-Generator: Weblate 5.12-dev\n"
 
 #: core/bandwidth/libbandwidth.cpp:54
 msgid "Calling bandwidth"
 msgstr "Kaller båndbredde"
 
 #: core/bandwidth/main.c:2992
-#, fuzzy
-#| msgid "(version %s is available)"
 msgid "(unavailable)"
-msgstr "(versjon %s er tilgjengelig)"
+msgstr "(utilgjengelig)"
 
 #: core/benchmarks.cpp:92
 msgid "Updating benchmark status"
@@ -74,19 +73,17 @@ msgid "in %u seconds"
 msgstr "om %u sekunder"
 
 #: core/benchmarks.cpp:130
-#, fuzzy, c-format
-#| msgid "Starting benchmark"
+#, c-format
 msgid "Starting benchmark with %u threads"
-msgstr "Starter ytelsestest"
+msgstr "Starter ytelsestest med %u tråder"
 
 #: core/benchmarks.cpp:153
 msgid "an error occurred while starting benchmark"
 msgstr "En feil inntraff under oppstart av ytelsestest"
 
 #: core/core.cpp:67
-#, fuzzy
 msgid "Calculating CPU usage"
-msgstr "Regner ut prosessor-bruk …"
+msgstr "Regner ut prosessorbruk"
 
 #: core/core.cpp:109
 #, c-format
@@ -106,14 +103,12 @@ msgid "Calculating CPU multipliers in fallback mode"
 msgstr "Regner ut prosessor-multiplikatorer i tilbakefallsmodus"
 
 #: core/core.cpp:208
-#, fuzzy
 msgid "Retrieving motherboard information in fallback mode"
 msgstr "Henter hovedkortinformasjon i tilbakefallsmodus"
 
 #: core/core.cpp:224
-#, fuzzy
 msgid "failed to retrieve motherboard information (fallback mode)"
-msgstr "Klarte ikke å hente hovedkortinformasjon (tilbakefallsmodus)"
+msgstr "klarte ikke å hente hovedkortinformasjon (tilbakefallsmodus)"
 
 #: core/core.cpp:267
 msgid "Retrieving CPU temperature in fallback mode"
@@ -140,17 +135,15 @@ msgid "failed to retrieve CPU frequency (fallback mode)"
 msgstr "Klarte ikke å hente prosessor-frekvens (tilbakefallsmodus)"
 
 #: core/dmidecode/dmidecode.c:5801
-#, fuzzy
-#| msgid "unknown"
 msgid "Unknown"
-msgstr "ukjent"
+msgstr "Ukjent"
 
 #: core/dmidecode/libdmidecode.cpp:47
 msgid "Calling dmidecode"
 msgstr "Kaller dmidecode"
 
 #: core/dmidecode/libdmidecode.cpp:89 core/dmidecode/libdmidecode.cpp:108
-#, fuzzy, c-format
+#, c-format
 msgid "%s (configured)"
 msgstr "%s (konfigurert)"
 
@@ -174,12 +167,12 @@ msgstr ""
 "ekst. familie: %i"
 
 #: core/libcpuid.cpp:127
-#, fuzzy, c-format
-#| msgid "Your CPU socket does not belong in database ==> %s, codename: %s"
+#, c-format
 msgid ""
 "Your CPU is not present in the database ==> %s, part number: 0x%x, codename: "
 "%s"
-msgstr "Din prosessor-sokkel finnes ikke i databasen ➜ %s, kodenavn: %s"
+msgstr ""
+"Din prosessor finnes ikke i databasen ==> %s, delenummer: 0x%x, kodenavn: %s"
 
 #: core/libcpuid.cpp:134
 msgid "Finding CPU technology"
@@ -199,17 +192,14 @@ msgid "failed to call libcpuid (%s)"
 msgstr "Klarte ikke å kalle libcpuid (%s)"
 
 #: core/libcpuid.cpp:413
-#, fuzzy
 msgid "Calling libcpuid for retrieving dynamic data"
-msgstr "Kaller libcpuid for innhenting av dynamisk data …"
+msgstr "Kaller libcpuid for innhenting av dynamiske data …"
 
 #: core/libcpuid.cpp:430
-#, fuzzy
 msgid "Calling libcpuid for retrieving CPU MSR static values"
 msgstr "Kaller libcpuid for mottak av statiske CPU MSR-verdier …"
 
 #: core/libcpuid.cpp:460
-#, fuzzy
 msgid "Calling libcpuid for retrieving CPU MSR dynamic values"
 msgstr "Kaller libcpuid for mottak av dynamiske CPU MSR-verdier …"
 
@@ -218,8 +208,7 @@ msgid "Finding CPU package in fallback mode"
 msgstr "Finner prosessor-pakke i tilbakefallsmodus"
 
 #: core/libcpuid.cpp:519
-#, fuzzy, c-format
-#| msgid "Your CPU socket does not belong in database ==> %s, codename: %s"
+#, c-format
 msgid "Your CPU socket is not present in the database ==> %s, codename: %s"
 msgstr "Din prosessor-sokkel finnes ikke i databasen ➜ %s, kodenavn: %s"
 
@@ -278,29 +267,25 @@ msgid "failed to get version for platform %u (%s)"
 msgstr "klarte ikke å hente plattformsversjon %u (%s)"
 
 #: core/libopencl.cpp:257
-#, fuzzy, c-format
+#, c-format
 msgid "failed to find number of OpenCL devices for platform '%s %s' (%s)"
 msgstr "klarte ikke å finne antall OpenCL-enheter for plattformen «%s %s» (%s»"
 
 #: core/libopencl.cpp:257
-#, fuzzy
-#| msgid "DeviceID"
 msgid "0 device"
-msgstr "Enhets-ID"
+msgstr "0-enhet"
 
 #: core/libopencl.cpp:266
-#, fuzzy, c-format
+#, c-format
 msgid "failed to get all of OpenCL devices for platform '%s %s' (%s)"
 msgstr "klarte ikke å hente alle OpenCL-enheter for plattformen «%s %s» (%s)"
 
 #: core/libopencl.cpp:283
-#, fuzzy
-#| msgid "Version"
 msgid "Finding OpenCL API version"
-msgstr "Versjon"
+msgstr "Finner OpenCL API-versjon"
 
 #: core/libopencl.cpp:287
-#, fuzzy, c-format
+#, c-format
 msgid "There is no platform with OpenCL support (%s)"
 msgstr "Det finnes ingen plattform med OpenCL-støtte (%s)"
 
@@ -312,13 +297,11 @@ msgstr "klarte ikke å hente alle OpenCL-plattformer (%s)"
 #: core/libopencl.cpp:305
 #, c-format
 msgid "Unable to find OpenCL driver for vendor %s"
-msgstr ""
+msgstr "Kunne ikke finne OpenCL-driver for leverandøren %s"
 
 #: core/libopengl.cpp:172
-#, fuzzy
-#| msgid "failed to retrieve GPU clocks"
 msgid "failed to create EGL context"
-msgstr "klarte ikke å hente GPU-klokker"
+msgstr "klarte ikke å lage EGL-kontekt"
 
 #: core/libopengl.cpp:183
 #, fuzzy, c-format
@@ -597,11 +580,6 @@ msgstr "pkexec: Uventet feilkode"
 msgid "Connecting to daemon…"
 msgstr "Tilkoblet nisse"
 
-#: daemon/server.cpp:267
-#, c-format
-msgid "request_handler: case %i not handled"
-msgstr "forespørselshåndterer: Tilfelle %i ikke håndtert"
-
 #: data.cpp:127 cpu-x-gtk-3.12.ui:1481
 msgid "CPU"
 msgstr "Prosessor"
@@ -847,7 +825,7 @@ msgstr ""
 
 #: data.hpp:117
 msgid "Variant"
-msgstr ""
+msgstr "Variant"
 
 #: data.hpp:118 data.hpp:271
 msgid "Part Number"
@@ -1257,7 +1235,12 @@ msgstr "Vis %s-linsensen: <%s>\n"
 msgid "-- %-11s version: %s"
 msgstr "-- %-9s versjon: %s"
 
-#: main.cpp:410
+#: main.cpp:359
+#, c-format
+msgid "Writing log to '%s' file..."
+msgstr ""
+
+#: main.cpp:411
 #, fuzzy, c-format
 #| msgid ""
 #| "\n"
@@ -1271,7 +1254,7 @@ msgstr ""
 "\n"
 "%s! %s has received signal %d (%s) and has crashed.%s"
 
-#: main.cpp:412
+#: main.cpp:413
 #, fuzzy, c-format
 #| msgid ""
 #| "\n"
@@ -1285,12 +1268,12 @@ msgstr ""
 "\n"
 "%s! %s has received signal %d (%s) and has crashed.%s"
 
-#: main.cpp:436
+#: main.cpp:437
 msgid "You can open a new issue here, by filling the template as requested:"
 msgstr ""
 "Du kan åpne en ny problemrapport her ved å fylle ut malen som forespurt:"
 
-#: main.cpp:477
+#: main.cpp:478
 #, fuzzy
 msgid "an error occurred while setting locale"
 msgstr "Kunne ikke sette lokalitet"
@@ -1761,6 +1744,10 @@ msgstr ""
 #: io.github.thetumultuousunicornofdarkness.cpu-x.desktop.in:10
 msgid "CPU;system;core;speed;clock;rate;Intel;AMD;motherboard;"
 msgstr ""
+
+#, c-format
+#~ msgid "request_handler: case %i not handled"
+#~ msgstr "forespørselshåndterer: Tilfelle %i ikke håndtert"
 
 #, fuzzy, c-format
 #~| msgid "Your GPU driver is unknown: %s"
