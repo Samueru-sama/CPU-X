@@ -45,10 +45,10 @@ runCmd chmod --verbose a+x ./lib4bin
 runCmd ./lib4bin -p -v -s -k \
 	--dst-dir "$APPDIR" \
 	"$APPDIR"/shared/bin/cpu-x \
-	/usr/lib/"$ARCH"-linux-gnu/dri/* \
-	/usr/lib/"$ARCH"-linux-gnu/libEGL*.so* \
+	/usr/lib/"$ARCH"-linux-gnu/libcpuid.so* \
 	/usr/lib/"$ARCH"-linux-gnu/libvulkan*.so* \
 	/usr/lib/"$ARCH"-linux-gnu/libgirepository-*.so* \
+	/usr/lib/"$ARCH"-linux-gnu/gvfs/* \
 	/usr/lib/"$ARCH"-linux-gnu/gtk-*/*/immodules/*.so \
 	/usr/lib/"$ARCH"-linux-gnu/gdk-pixbuf-*/*/loaders/*
 runCmd ./lib4bin -s --with-wrappe --dst-dir "$APPDIR"/bin "$APPDIR"/shared/bin/cpu-x-daemon
