@@ -15,12 +15,14 @@ jobs:
     runs-on: ${{ matrix.os.label }}
     strategy:
       matrix:
-        os:
-          # x86_64 (https://github.com/actions/runner-images/tree/main/images/ubuntu)
-          - { arch: x86_64, label: ubuntu-latest }
-          # ARM64 (https://github.com/actions/partner-runner-images)
-          - { arch: aarch64, label: ubuntu-24.04-arm }
-
+        include:
+          - runs-on: ubuntu-latest
+            name: "Dolphin build"
+            arch: x86_64
+          - runs-on: ubuntu-24.04-arm
+            name: "Dolphin build"
+            arch: aarch64
+    container: ghcr.io/pkgforge-dev/archlinux:latest
     steps:
     - uses: actions/checkout@v4
 
