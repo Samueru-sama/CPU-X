@@ -21,7 +21,7 @@ if [[ $# -lt 2 ]]; then
 fi
 
 # declare variables
-BUILD_TYPE=${BUILD_TYPE:-RelWithDebInfo}
+BUILD_TYPE="${BUILD_TYPE:-RelWithDebInfo}"
 WORKSPACE="$(realpath "$1")"
 APPDIR="$(realpath "$2")"
 WGET_ARGS=(--continue --no-verbose)
