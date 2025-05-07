@@ -26,8 +26,6 @@ jobs:
     steps:
     - uses: actions/checkout@v4
 
-    - uses: abbbi/github-actions-tune@v1
-
     - name: Package CPU-X as an AppImage
       run: |
         bash -x ./scripts/build_appimage.sh "$GITHUB_WORKSPACE" "$GITHUB_WORKSPACE/AppDir"
