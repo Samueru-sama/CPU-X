@@ -121,7 +121,7 @@ runCmd ./lib4bin -p -v -s -k \
 	/usr/lib/gvfs/* \
 	/usr/lib/gtk-*/*/immodules/*.so \
 	/usr/lib/gdk-pixbuf-*/*/loaders/*
-runCmd ./lib4bin -s --with-wrappe --dst-dir "$APPDIR"/bin "$APPDIR"/shared/bin/cpu-x-daemon
+runCmd ./lib4bin -s --with-wrappe --dst-dir "$APPDIR"/shared/bin "$APPDIR"/shared/bin/cpu-x-daemon
 
 runCmd cp -r "$APPDIR"/shared/share/* "$APPDIR"/share
 runCmd rm -rf "$APPDIR"/shared/share
