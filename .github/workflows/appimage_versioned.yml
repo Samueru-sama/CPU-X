@@ -93,6 +93,8 @@ jobs:
           - **AppImage (ARM64)**: CPU-X-${{ env.VERSION }}-aarch64.AppImage
           - **AppImage (x86_64)**: CPU-X-${{ env.VERSION }}-x86_64.AppImage
 
+          These AppImages are able to work everywhere, including musl and non-FHS systems, FUSE is not required at all.
+
           *Note: a Polkit Authentication agent is mandatory to start daemon from GUI.*
 
           ## Notes
