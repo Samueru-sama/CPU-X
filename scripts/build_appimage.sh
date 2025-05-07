@@ -63,7 +63,8 @@ runCmd pacman -Syu --noconfirm \
 	strace \
 	valgrind \
 	vulkan-headers \
-	vulkan-icd-loader
+	vulkan-icd-loader \
+	wget
 
 # install debloated packages
 if [ "$(uname -m)" = 'x86_64' ]; then
