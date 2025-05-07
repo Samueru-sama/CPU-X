@@ -35,9 +35,11 @@ echo "UPDATE_INFORMATION=$UPDATE_INFORMATION"
 # Install dependencies
 runCmd pacman -Syu --noconfirm \
 	base-devel \
+	binutils \
 	cairomm \
 	cmake \
 	dconf \
+	findutils \
 	gawk \
 	gcc-libs \
 	git \
@@ -54,9 +56,11 @@ runCmd pacman -Syu --noconfirm \
 	opencl-headers \
 	opencl-icd-loader \
 	pangomm \
+	patchelf \
 	pciutils \
 	polkit \
 	procps-ng \
+	strace \
 	valgrind \
 	vulkan-headers \
 	vulkan-icd-loader
