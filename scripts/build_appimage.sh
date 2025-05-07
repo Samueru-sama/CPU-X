@@ -33,7 +33,7 @@ export UPDATE_INFORMATION="gh-releases-zsync|${GITHUB_REPOSITORY//\//|}|${RELEAS
 echo "UPDATE_INFORMATION=$UPDATE_INFORMATION"
 
 # Install dependencies
-runCmd echo pacman -Syu --noconfirm \
+runCmd pacman -Syu --noconfirm \
 	base-devel \
 	cairomm \
 	cmake \
