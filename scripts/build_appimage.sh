@@ -21,6 +21,7 @@ if [[ $# -lt 2 ]]; then
 fi
 
 # declare variables
+export APPIMAGE_EXTRACT_AND_RUN=1
 WORKSPACE="$(realpath "$1")"
 APPDIR="$(realpath "$2")"
 WGET_ARGS=(--continue --no-verbose)
