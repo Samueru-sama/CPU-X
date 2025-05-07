@@ -11,16 +11,16 @@ env:
 
 jobs:
   linux-appimage-continuous-build:
-    name: Linux ${{ matrix.os.arch }} (Continuous build)
+    name: Linux ${{ matrix.arch }} (Continuous build)
     runs-on: ${{ matrix.runs-on }}
     strategy:
       matrix:
         include:
           - runs-on: ubuntu-latest
-            name: "Dolphin build"
+            name: "AppImage build"
             arch: x86_64
           - runs-on: ubuntu-24.04-arm
-            name: "Dolphin build"
+            name: "AppImage build"
             arch: aarch64
     container: ghcr.io/pkgforge-dev/archlinux:latest
     steps:
@@ -34,7 +34,7 @@ jobs:
     - name: Upload artifacts
       uses: actions/upload-artifact@v4
       with:
-        name: linux-${{ matrix.os.arch }}
+        name: linux-${{ matrix.arch }}
         path: AppImage/CPU-X-*
 
 
