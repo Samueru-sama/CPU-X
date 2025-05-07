@@ -12,7 +12,7 @@ env:
 jobs:
   linux-appimage-continuous-build:
     name: Linux ${{ matrix.os.arch }} (Continuous build)
-    runs-on: ${{ matrix.os.label }}
+    runs-on: ${{ matrix.runs-on }}
     strategy:
       matrix:
         include:
