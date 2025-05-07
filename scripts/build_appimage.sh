@@ -47,6 +47,7 @@ runCmd ./lib4bin -p -v -s -k \
 	"$APPDIR"/shared/bin/cpu-x \
 	/usr/lib/"$ARCH"-linux-gnu/libcpuid.so* \
 	/usr/lib/"$ARCH"-linux-gnu/libvulkan*.so* \
+	/usr/lib/"$ARCH"-linux-gnu/libEGL.so* \
 	/usr/lib/"$ARCH"-linux-gnu/libgirepository-*.so* \
 	/usr/lib/"$ARCH"-linux-gnu/gvfs/* \
 	/usr/lib/"$ARCH"-linux-gnu/gtk-*/*/immodules/*.so \
