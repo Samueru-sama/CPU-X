@@ -21,7 +21,7 @@ if [[ $# -lt 2 ]]; then
 fi
 
 # declare variables
-export APPIMAGE_EXTRACT_AND_RUN=1
+BUILD_TYPE=${BUILD_TYPE:-RelWithDebInfo}
 WORKSPACE="$(realpath "$1")"
 APPDIR="$(realpath "$2")"
 WGET_ARGS=(--continue --no-verbose)
@@ -84,7 +84,7 @@ git clone https://github.com/anrieff/libcpuid.git /tmp/libcpuid && (
 	echo "Run CMake to build libcpuid"
 	runCmd cmake -B build \
 		-GNinja \
-		-DCMAKE_BUILD_TYPE=Release \
+		-DCMAKE_BUILD_TYPE="$BUILD_TYPE" \
 		-DCMAKE_INSTALL_PREFIX=/usr \
 		-DBUILD_SHARED_LIBS=OFF
 	runCmd cmake --build build
@@ -96,7 +96,7 @@ echo "Run CMake to build CPU-X"
 runCmd cmake -S . \
 	-B build \
 	-GNinja \
-	-DCMAKE_BUILD_TYPE=Release \
+	-DCMAKE_BUILD_TYPE="$BUILD_TYPE" \
 	-DCMAKE_INSTALL_PREFIX=/usr \
 	-DCMAKE_INSTALL_LIBEXECDIR=/usr/bin \
 	-DAPPIMAGE=1
@@ -133,5 +133,6 @@ runCmd "$APPDIR"/sharun -g
 # Make AppImage
 runCmd mkdir --parents --verbose "$WORKSPACE/AppImage" && runCmd cd "$_"
 runCmd wget "${WGET_ARGS[@]}" "https://github.com/pkgforge-dev/appimagetool-uruntime/releases/download/continuous/appimagetool-$ARCH.AppImage"
-runCmd chmod --verbose a+x ./appimagetool-$ARCH.AppImage
-./appimagetool-$ARCH.AppImage --no-appstream -u "$UPDATE_INFORMATION" "$APPDIR"
+runCmd chmod --verbose a+x ./appimagetool-"$ARCH".AppImage
+APPIMAGE_EXTRACT_AND_RUN=1 ./appimagetool-"$ARCH".AppImage \
+	--no-appstream -u "$UPDATE_INFORMATION" "$APPDIR"
