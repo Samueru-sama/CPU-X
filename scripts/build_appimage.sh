@@ -1,7 +1,6 @@
 #!/bin/bash
 
 set -eo pipefail
-source /etc/os-release
 
 # Functions
 die() {
@@ -18,9 +17,6 @@ runCmd() {
 # Constant variables
 if [[ $# -lt 2 ]]; then
 	echo "$0: WORKSPACE APPDIR"
-	exit 1
-elif [[ "$ID" != "arch" ]]; then
-	echo "$0: this script must be run on a Archlinux system"
 	exit 1
 fi
 
