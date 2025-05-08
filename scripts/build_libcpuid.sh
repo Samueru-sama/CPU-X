@@ -101,6 +101,7 @@ cmake -B build \
 
 echo "Build libcpuid"
 cmake --build build
+ninja -C build install
 
 if [[ -z "$INSTALL_DIR" ]]; then
 	echo "Install libcpuid to system"
